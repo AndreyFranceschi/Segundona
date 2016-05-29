@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="conteudo">
+		<p:panel header="Cadastro Jogador" id="page-cadastro-jogador">
+			<h:form id="form-jogador">
+				<p:messages id="form-message" globalOnly="true" closable="true"
+					showDetail="true" showSummary="false" />
+				<h:panelGrid columns="3">
+					<p:outputLabel value="Nome: " for="nome" />
+					<p:inputText id="nome" value="#{jogadorBean.jogador.nome}"
+						required="true" />
+					<p:message id="msgNome" for="nome" />
+
+					<p:outputLabel value="Nota: " for="nota" />
+					<p:inputText id="nota" value="#{jogadorBean.jogador.nota}"
+						required="true" />
+					<p:message id="msgNota" for="nota" />
+					
+					<p:outputLabel value="Posição" for="posicao" />
+					<p:selectOneMenu id="posicao" value="#{jogadorBean.jogador.posicao}">
+						<f:selectItem itemLabel="Selecione" itemValue="" />
+						<f:selectItem itemLabel="Goleiro" itemValue="Goleiro" />
+						<f:selectItem itemLabel="Fixo" itemValue="Fixo" />
+						<f:selectItem itemLabel="Ala-Esquerdo" itemValue="Ala-Esquerdo" />
+						<f:selectItem itemLabel="Ala-Direito" itemValue="Ala-Direito" />
+						<f:selectItem itemLabel="Pivô" itemValue="Pivô" />
+					</p:selectOneMenu>
+					<p:message for="posicao" />
+				</h:panelGrid>
+				<br />
+				<p:commandButton value="Cadastrar" action="#{jogadorBean.salvar}"
+					update="page-cadastro-jogador" />
+			</h:form>
+			<br />
+			<br />
+			<p:dataTable value="#{jogadorBean.jogadores}" var="jogador"
+				paginator="true" rows="5"
+				rendered="#{not empty jogadorBean.jogadores}"
+				emptyMessage="Não foi possivel localizar dados"
+				rowsPerPageTemplate="5,10,50,100">
+				<p:column headerText="Nome" sortBy="#{jogador.nome}">
+					<h:outputLabel value="#{jogador.nome}" />
+				</p:column>
+				<p:column headerText="Nota" sortBy="#{jogador.nota}">
+					<h:outputLabel value="#{jogador.nota}" />
+				</p:column>
+				<p:column headerText="Posição" sortBy="#{jogador.posicao}">
+					<h:outputLabel value="#{jogador.posicao}" />
+				</p:column>
+				<p:column headerText="Ações">
+					<h:form>
+						<p:commandButton value="Alterar"
+							action="#{jogadorBean.alterar(jogador)}"
+							update="page-cadastro-jogador" />
+					</h:form>
+					<h:form>
+						<p:commandButton value="Excluir"
+							action="#{jogadorBean.excluir(jogador)}"
+							update="page-cadastro-jogador" />
+					</h:form>
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+</html>

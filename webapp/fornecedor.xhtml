@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="conteudo">
+		<p:panel header="Cadastro Fornecedor" id="page-cadastro-fornecedor">
+			<h:form>
+				<p:messages globalOnly="true" showDetail="true" showSummary="false"
+					showIcon="true" closable="true" />
+				<h:panelGrid columns="3">
+
+					<p:outputLabel value="CNPJ: " for="cnpj" />
+					<p:inputMask mask="99.999.999/9999-99"
+						value="#{fornecedorBean.fornecedor.cnpj}" id="cnpj"
+						required="true">
+					</p:inputMask>
+
+					<p:message for="cnpj" />
+
+					<p:outputLabel value="Nome Fantasia " for="nomeFantasia" />
+					<p:inputText value="#{fornecedorBean.fornecedor.nomeFantasia}"
+						id="nomeFantasia" required="true" />
+					<p:message for="nomeFantasia" />
+
+				</h:panelGrid>
+				<br />
+				<p:commandButton value="Salvar" action="#{fornecedorBean.salvar}"
+					update="page-cadastro-fornecedor" />
+				<p:commandButton value="Cancelar"
+					action="#{fornecedorBean.cancelar}"
+					update="page-cadastro-fornecedor" immediate="true"
+					resetValues="true" />
+			</h:form>
+			<br />
+			<p:dataTable value="#{fornecedorBean.fornecedores}" var="fornecedor"
+				rendered="#{not empty fornecedorBean.fornecedores}">
+				<p:column headerText="Nome Fantasia">
+					<h:outputText value="#{fornecedor.nomeFantasia}" />
+				</p:column>
+				<p:column headerText="CNPJ">
+					<h:outputText value="#{fornecedor.cnpj}" />
+				</p:column>
+				<p:column headerText="Ações">
+					<h:form>
+						<p:commandButton value="Alterar"
+							action="#{fornecedorBean.alterar(fornecedor)}"
+							update="page-cadastro-fornecedor" />
+					</h:form>
+					<h:form>
+						<p:commandButton value="Excluir"
+							action="#{fornecedorBean.excluir(fornecedor)}"
+							update="page-cadastro-fornecedor" />
+					</h:form>
+				</p:column>
+			</p:dataTable>
+
+		</p:panel>
+	</ui:define>
+</ui:composition>
+</html>

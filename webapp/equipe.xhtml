@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="conteudo">
+		<p:panel header="Cadastro Equipe" id="page-cadastro-equipe">
+			<h:form id="form-equipe">
+				<p:messages id="form-message" globalOnly="true" closable="true"
+					showDetail="true" showSummary="false" />
+				<h:panelGrid columns="3">
+					<p:outputLabel value="Cor: " for="cor" />
+					<p:inputText id="cor" value="#{equipeBean.equipe.cor}"
+						required="true" requiredMessage="Campo Obrigatório" />
+					<p:message id="msgCor" for="cor" />
+
+					<p:outputLabel value="Jogador 1: " for="jogador1" />
+					<p:inputText id="jogador1" value="#{equipeBean.equipe.jogador1}" />
+
+				</h:panelGrid>
+				<br />
+				<p:commandButton value="Cadastrar" action="#{equipeBean.salvar}"
+					update="page-cadastro-equipe" />
+			</h:form>
+			<br />
+			<br />
+			<p:dataTable value="#{equipeBean.equipes}" var="equipe"
+				paginator="true" rows="5" rendered="#{not empty equipeBean.equipes}"
+				emptyMessage="Não foi possivel localizar dados"
+				rowsPerPageTemplate="5,10,50,100">
+				<p:column headerText="Cor" sortBy="#{equipe.cor}">
+					<h:outputLabel value="#{equipe.cor}" />
+				</p:column>
+				<p:column headerText="Jogador 1" sortBy="#{equipe.jogador1.nome}">
+					<h:outputLabel value="#{equipe.jogador1.nome}" />
+				</p:column>
+				<p:column headerText="Ações">
+					<h:form>
+						<p:commandButton value="Alterar"
+							action="#{equipeBean.alterar(equipe)}"
+							update="page-cadastro-equipe" />
+					</h:form>
+					<h:form>
+						<p:commandButton value="Excluir"
+							action="#{equipeBean.excluir(equipe)}"
+							update="page-cadastro-equipe" />
+					</h:form>
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+</html>
