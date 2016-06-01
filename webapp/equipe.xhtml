@@ -12,13 +12,48 @@
 				<p:messages id="form-message" globalOnly="true" closable="true"
 					showDetail="true" showSummary="false" />
 				<h:panelGrid columns="3">
-					<p:outputLabel value="Cor: " for="cor" />
-					<p:inputText id="cor" value="#{equipeBean.equipe.cor}"
-						required="true" requiredMessage="Campo Obrigatório" />
-					<p:message id="msgCor" for="cor" />
+					<p:outputLabel value="Cor" for="cor" />
+					<p:selectOneMenu id="cor" value="#{equipeBean.equipe.cor}">
+						<f:selectItem itemLabel="Selecione" itemValue="" />
+						<f:selectItem itemLabel="Amarelo" itemValue="Amarelo" />
+						<f:selectItem itemLabel="Preto" itemValue="Preto" />
+					</p:selectOneMenu>
+					<p:message for="cor" />
 
-					<p:outputLabel value="Jogador 1: " for="jogador1" />
-					<p:inputText id="jogador1" value="#{equipeBean.equipe.jogador1}" />
+
+
+					<p:outputLabel value="Jogador 1:" for="jogador1" />
+					<h:selectOneMenu id="jogador1" value="#{equipeBean.jogador1}">
+						<f:selectItem itemValue="" itemLabel="Selecione uma empresa" />
+						<f:selectItems value="#{jogadorBean.jogadores}" var="jogador1"
+							itemLabel="#{equipeBean.jogador1}" itemValue="#{equipeBean.jogador1}" />
+					</h:selectOneMenu>
+					<p:message for="jogador1" />
+
+
+					<p:outputLabel value="Jogador 2: " for="jogador2" />
+					<p:inputText id="jogador2" value="#{equipeBean.jogador2}" />
+					<p:message id="msgJogador2" for="jogador2" />
+
+					<p:outputLabel value="Jogador 3: " for="jogador3" />
+					<p:inputText id="jogador3" value="#{equipeBean.jogador3}" />
+					<p:message id="msgJogador3" for="jogador3" />
+
+					<p:outputLabel value="Jogador 4: " for="jogador4" />
+					<p:inputText id="jogador4" value="#{equipeBean.jogador4}" />
+					<p:message id="msgJogador4" for="jogador4" />
+
+					<p:outputLabel value="Jogador 5: " for="jogador5" />
+					<p:inputText id="jogador5" value="#{equipeBean.jogador5}" />
+					<p:message id="msgJogador5" for="jogador5" />
+
+					<p:outputLabel value="Jogador 6: " for="jogador6" />
+					<p:inputText id="jogador6" value="#{equipeBean.jogador6}" />
+					<p:message id="msgJogador6" for="jogador6" />
+
+					<p:outputLabel value="Jogador 7: " for="jogador7" />
+					<p:inputText id="jogador7" value="#{equipeBean.jogador7}" />
+					<p:message id="msgJogador7" for="jogador7" />
 
 				</h:panelGrid>
 				<br />
@@ -36,6 +71,24 @@
 				</p:column>
 				<p:column headerText="Jogador 1" sortBy="#{equipe.jogador1.nome}">
 					<h:outputLabel value="#{equipe.jogador1.nome}" />
+				</p:column>
+				<p:column headerText="Jogador 2" sortBy="#{equipe.jogador2.nome}">
+					<h:outputLabel value="#{equipe.jogador2.nome}" />
+				</p:column>
+				<p:column headerText="Jogador 3" sortBy="#{equipe.jogador3.nome}">
+					<h:outputLabel value="#{equipe.jogador3.nome}" />
+				</p:column>
+				<p:column headerText="Jogador 4" sortBy="#{equipe.jogador4.nome}">
+					<h:outputLabel value="#{equipe.jogador4.nome}" />
+				</p:column>
+				<p:column headerText="Jogador 5" sortBy="#{equipe.jogador5.nome}">
+					<h:outputLabel value="#{equipe.jogador5.nome}" />
+				</p:column>
+				<p:column headerText="Jogador 6" sortBy="#{equipe.jogador6.nome}">
+					<h:outputLabel value="#{equipe.jogador6.nome}" />
+				</p:column>
+				<p:column headerText="Jogador 7" sortBy="#{equipe.jogador7.nome}">
+					<h:outputLabel value="#{equipe.jogador7.nome}" />
 				</p:column>
 				<p:column headerText="Ações">
 					<h:form>

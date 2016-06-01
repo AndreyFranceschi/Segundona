@@ -40,10 +40,11 @@ public class Jogador {
 		nome = pNome;
 	}
 
+
 	/**
-	 * @return the id
+	 * @return the id_jogador
 	 */
-	public Long getId() {
+	public Long getId_jogador() {
 		return id_jogador;
 	}
 

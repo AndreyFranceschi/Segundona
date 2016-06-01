@@ -2,7 +2,8 @@ package br.com.sfcc.model;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +13,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+@Entity
 public class Partida {
 
 	@Id
@@ -21,15 +23,17 @@ public class Partida {
 	
 	@Temporal(TemporalType.DATE)
 	private Date data;
+	
 	private String tipo;
 	
-	@JoinColumn(name = "equipe", referencedColumnName = "id_equipe")
-    @OneToOne(cascade={CascadeType.PERSIST})
+	@OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn
 	private Equipe equipe1;
 	
-	@JoinColumn(name = "equipe", referencedColumnName = "id_equipe")
-    @OneToOne(cascade={CascadeType.PERSIST})
+	@OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn
 	private Equipe equipe2;
+	
 	private int vencedor;
 
 	/**
@@ -47,6 +51,23 @@ public class Partida {
 		this.equipe2 = equipe2;
 		this.vencedor = vencedor;
 	}
+
+	public Partida(){}
+	/**
+	 * @return the id_partida
+	 */
+	public Long getId_partida() {
+		return id_partida;
+	}
+
+
+	/**
+	 * @param id_partida the id_partida to set
+	 */
+	public void setId_partida(Long id_partida) {
+		this.id_partida = id_partida;
+	}
+
 
 	/**
 	 * @return the data

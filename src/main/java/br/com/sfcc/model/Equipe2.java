@@ -55,7 +55,7 @@ public class Equipe2{
 		JogadorBean jog = new JogadorBean();
 		List<Jogador> jogs = jog.getJogadores();
 		for (Jogador jogador : jogs) {
-			if(jogador.getId() == pJog){
+			if(jogador.getId_jogador() == pJog){
 				jogadores.add(jogador);
 			}
 		}

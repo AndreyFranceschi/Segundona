@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="conteudo">
+		<p:panel header="Cadastro Partida" id="page-cadastro-partida">
+			<h:form id="form-partida">
+				<p:messages id="form-message" globalOnly="true" closable="true"
+					showDetail="true" showSummary="false" />
+				<h:panelGrid columns="3">
+
+					<p:outputLabel value="Tipo:" for="tipo" />
+					<p:selectOneMenu id="tipo" value="#{partidaBean.partida.tipo}">
+						<f:selectItem itemLabel="Selecione" itemValue="" />
+						<f:selectItem itemLabel="Clássico" itemValue="Clássico" />
+						<f:selectItem itemLabel="GreNal" itemValue="GreNal" />
+					</p:selectOneMenu>
+					<p:message for="tipo" />
+
+					<p:outputLabel value="Data:" for="data" />
+					<p:inputText id="data" value="#{partidaBean.partida.data}">
+						<f:convertDateTime pattern="d-MM-yyyy" />
+					</p:inputText>
+					<p:message id="msgData" for="data" />
+					
+					<p:outputLabel value="Equipe 1: " for="equipe1" />
+					<p:inputText id="equipe1" value="#{partidaBean.equipe1}" />
+					<p:message id="msgEquipe1" for="equipe1" />
+					
+					<p:outputLabel value="Equipe 2: " for="equipe2" />
+					<p:inputText id="equipe2" value="#{partidaBean.equipe2}" />
+					<p:message id="msgEquipe2" for="equipe2" />
+					
+					<p:outputLabel value="Vencedor:" for="vencedor" />
+					<p:selectOneMenu id="vencedor" value="#{partidaBean.partida.vencedor}">
+						<f:selectItem itemLabel="Selecione" itemValue="" />
+						<f:selectItem itemLabel="Equipe 1" itemValue="1" />
+						<f:selectItem itemLabel="Equipe 2" itemValue="2" />
+					</p:selectOneMenu>
+					<p:message for="vencedor" />
+					
+				</h:panelGrid>
+				<br />
+				<p:commandButton value="Cadastrar" action="#{partidaBean.salvar}"
+					update="page-cadastro-partida" />
+			</h:form>
+			<br />
+			<br />
+			<p:dataTable value="#{partidaBean.partidas}" var="partida"
+				paginator="true" rows="5"
+				rendered="#{not empty partidaBean.partidas}"
+				emptyMessage="Não foi possivel localizar dados"
+				rowsPerPageTemplate="5,10,50,100">
+				<p:column headerText="Tipo" sortBy="#{partida.tipo}">
+					<h:outputLabel value="#{partida.tipo}" />
+				</p:column>
+				<p:column headerText="Data">
+					<h:outputText value="#{partida.data}">
+						<f:convertDateTime pattern="dd-MMMM-yyyy" />
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Equipe 1" sortBy="#{partida.equipe1.id_equipe}">
+					<h:outputLabel value="#{partida.equipe1.imprimeEquipe()}" />
+				</p:column>
+				<p:column headerText="Equipe 2" sortBy="#{partida.equipe2.id_equipe}">
+					<h:outputLabel value="#{partida.equipe2.imprimeEquipe()}" />
+				</p:column>
+				<p:column headerText="Vencedor" sortBy="#{partida.vencedor}">
+					<h:outputLabel value="Equipe #{partida.vencedor}" />
+				</p:column>
+
+				<p:column headerText="Ações">
+					<h:form>
+						<p:commandButton value="Alterar"
+							action="#{partidaBean.alterar(partida)}"
+							update="page-cadastro-partida" />
+					</h:form>
+					<h:form>
+						<p:commandButton value="Excluir"
+							action="#{partidaBean.excluir(partida)}"
+							update="page-cadastro-partida" />
+					</h:form>
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+</html>

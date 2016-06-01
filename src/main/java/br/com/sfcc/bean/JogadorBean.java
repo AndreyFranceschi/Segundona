@@ -57,7 +57,7 @@ public class JogadorBean {
 
 	public void excluir(Jogador pJogador) {
 		UtilMessage.warn("", pJogador.getNome()+" Foi Excluido!");
-		dao.excluir(pJogador.getId());
+		dao.excluir(pJogador.getId_jogador());
 		jogadores = dao.consultar();
 	}
 	
