@@ -61,5 +61,11 @@ public class JogadorBean {
 		jogadores = dao.consultar();
 	}
 	
+	public void cancelar() {
+		System.out.println("public void cancelar equipebean");
+		jogador = new Jogador();
+		jogadores = dao.consultar();
+	}
+	
 
 }

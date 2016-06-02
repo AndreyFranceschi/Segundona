@@ -14,7 +14,7 @@
 				<h:panelGrid columns="3">
 
 					<p:outputLabel value="Tipo:" for="tipo" />
-					<p:selectOneMenu id="tipo" value="#{partidaBean.partida.tipo}">
+					<p:selectOneMenu id="tipo" value="#{partidaBean.partida.tipo}" required="true">
 						<f:selectItem itemLabel="Selecione" itemValue="" />
 						<f:selectItem itemLabel="Clássico" itemValue="Clássico" />
 						<f:selectItem itemLabel="GreNal" itemValue="GreNal" />
@@ -22,17 +22,17 @@
 					<p:message for="tipo" />
 
 					<p:outputLabel value="Data:" for="data" />
-					<p:inputText id="data" value="#{partidaBean.partida.data}">
+					<p:inputText id="data" value="#{partidaBean.partida.data}" required="true">
 						<f:convertDateTime pattern="d-MM-yyyy" />
 					</p:inputText>
-					<p:message id="msgData" for="data" />
+					<p:message for="data" />
 					
 					<p:outputLabel value="Equipe 1: " for="equipe1" />
-					<p:inputText id="equipe1" value="#{partidaBean.equipe1}" />
+					<p:inputText id="equipe1" value="#{partidaBean.equipe1}" required="true"/>
 					<p:message id="msgEquipe1" for="equipe1" />
 					
 					<p:outputLabel value="Equipe 2: " for="equipe2" />
-					<p:inputText id="equipe2" value="#{partidaBean.equipe2}" />
+					<p:inputText id="equipe2" value="#{partidaBean.equipe2}" required="true"/>
 					<p:message id="msgEquipe2" for="equipe2" />
 					
 					<p:outputLabel value="Vencedor:" for="vencedor" />
@@ -46,7 +46,9 @@
 				</h:panelGrid>
 				<br />
 				<p:commandButton value="Cadastrar" action="#{partidaBean.salvar}"
-					update="page-cadastro-partida" />
+					update="page-cadastro-partida"/>
+				<p:commandButton value="Cancelar" action="#{partidaBean.cancelar}"
+					update="page-cadastro-partida"/>
 			</h:form>
 			<br />
 			<br />

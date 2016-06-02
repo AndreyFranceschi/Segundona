@@ -120,6 +120,19 @@ public class EquipeBean {
 		if (equipe.getJogador7() != null)
 			jogador7 = equipe.getJogador7().getId_jogador().toString();
 	}
+	
+	public void cancelar() {
+		System.out.println("public void cancelar equipebean");
+		equipe = new Equipe();
+		equipes = dao.consultar();
+		jogador1 = "";
+		jogador2 = "";
+		jogador3 = "";
+		jogador4 = "";
+		jogador5 = "";
+		jogador6 = "";
+		jogador7 = "";
+	}
 
 	public void excluir(Equipe pEquipe) {
 		UtilMessage.warn("", pEquipe.getCor() + " Foi Excluida!");

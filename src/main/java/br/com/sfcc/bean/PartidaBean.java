@@ -10,6 +10,7 @@ import javax.faces.bean.SessionScoped;
 import br.com.sfcc.dao.Dao;
 import br.com.sfcc.dao.IDao;
 import br.com.sfcc.model.Equipe;
+import br.com.sfcc.model.Jogador;
 import br.com.sfcc.model.Partida;
 import br.com.tt.util.faces.UtilMessage;
 
@@ -44,19 +45,26 @@ public class PartidaBean {
 	}
 
 	public void salvar() {
-		Equipe equipe;
+		Equipe equipe = new Equipe();
+		dao.salvar(partida);
 		if (equipe1 != "") {
 			equipe = daoEquipe.buscar(Long.parseLong(equipe1));
+			equipe.setPartida(partida);
 			partida.setEquipe1(equipe);
+			daoEquipe.salvar(equipe);
 		}
 		if (equipe2 != "") {
 			equipe = daoEquipe.buscar(Long.parseLong(equipe2));
+			equipe.setPartida(partida);
 			partida.setEquipe2(equipe);
+			daoEquipe.salvar(equipe);
 		}
 		dao.salvar(partida);
 		partida = new Partida();
 		UtilMessage.info("Partida Salva", "Partida Salva com sucesso");
 		partidas = dao.consultar();
+		equipe1 = "";
+		equipe2 = "";
 	}
 
 	public List<Partida> getPartidas() {
@@ -76,6 +84,15 @@ public class PartidaBean {
 		dao.excluir(pPartida.getId_partida());
 		partidas = dao.consultar();
 	}
+	
+	public void cancelar() {
+		System.out.println("public void cancelar equipebean");
+		partida = new Partida();
+		partidas = dao.consultar();
+		equipe1 = "";
+		equipe2 = "";
+	}
+	
 	/**
 	 * @return the equipe1
 	 */

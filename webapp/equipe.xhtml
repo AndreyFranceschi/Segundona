@@ -12,40 +12,60 @@
 				<p:messages id="form-message" globalOnly="true" closable="true"
 					showDetail="true" showSummary="false" />
 				<h:panelGrid columns="3">
+
 					<p:outputLabel value="Cor" for="cor" />
-					<p:selectOneMenu id="cor" value="#{equipeBean.equipe.cor}">
+					<p:selectOneMenu id="cor" value="#{equipeBean.equipe.cor}"
+						required="true">
 						<f:selectItem itemLabel="Selecione" itemValue="" />
 						<f:selectItem itemLabel="Amarelo" itemValue="Amarelo" />
 						<f:selectItem itemLabel="Preto" itemValue="Preto" />
 					</p:selectOneMenu>
 					<p:message for="cor" />
 
-
-
 					<p:outputLabel value="Jogador 1:" for="jogador1" />
-					<h:selectOneMenu id="jogador1" value="#{equipeBean.jogador1}">
-						<f:selectItem itemValue="" itemLabel="Selecione uma empresa" />
+					<h:selectOneMenu id="jogador1" value="#{equipeBean.jogador1}"
+						required="true">
+						<f:selectItem itemValue="0" itemLabel="Selecione um jogador" />
 						<f:selectItems value="#{jogadorBean.jogadores}" var="jogador1"
-							itemLabel="#{equipeBean.jogador1}" itemValue="#{equipeBean.jogador1}" />
+							itemLabel="#{jogador1.nome}" itemValue="#{jogador1.id_jogador}" />
 					</h:selectOneMenu>
 					<p:message for="jogador1" />
 
+					<p:outputLabel value="Jogador 2:" for="jogador2" />
+					<h:selectOneMenu id="jogador2" value="#{equipeBean.jogador2}"
+						required="true">
+						<f:selectItem itemValue="0" itemLabel="Selecione um jogador" />
+						<f:selectItems value="#{jogadorBean.jogadores}" var="jogador2"
+							itemLabel="#{jogador2.nome}" itemValue="#{jogador2.id_jogador}" />
+					</h:selectOneMenu>
+					<p:message for="jogador2" />
 
-					<p:outputLabel value="Jogador 2: " for="jogador2" />
-					<p:inputText id="jogador2" value="#{equipeBean.jogador2}" />
-					<p:message id="msgJogador2" for="jogador2" />
+					<p:outputLabel value="Jogador 3:" for="jogador3" />
+					<h:selectOneMenu id="jogador3" value="#{equipeBean.jogador3}"
+						required="true">
+						<f:selectItem itemValue="0" itemLabel="Selecione um jogador" />
+						<f:selectItems value="#{jogadorBean.jogadores}" var="jogador3"
+							itemLabel="#{jogador3.nome}" itemValue="#{jogador3.id_jogador}" />
+					</h:selectOneMenu>
+					<p:message for="jogador3" />
 
-					<p:outputLabel value="Jogador 3: " for="jogador3" />
-					<p:inputText id="jogador3" value="#{equipeBean.jogador3}" />
-					<p:message id="msgJogador3" for="jogador3" />
+					<p:outputLabel value="Jogador 4:" for="jogador4" />
+					<h:selectOneMenu id="jogador4" value="#{equipeBean.jogador4}"
+						required="true">
+						<f:selectItem itemValue="0" itemLabel="Selecione um jogador" />
+						<f:selectItems value="#{jogadorBean.jogadores}" var="jogador4"
+							itemLabel="#{jogador4.nome}" itemValue="#{jogador4.id_jogador}" />
+					</h:selectOneMenu>
+					<p:message for="jogador4" />
 
-					<p:outputLabel value="Jogador 4: " for="jogador4" />
-					<p:inputText id="jogador4" value="#{equipeBean.jogador4}" />
-					<p:message id="msgJogador4" for="jogador4" />
-
-					<p:outputLabel value="Jogador 5: " for="jogador5" />
-					<p:inputText id="jogador5" value="#{equipeBean.jogador5}" />
-					<p:message id="msgJogador5" for="jogador5" />
+					<p:outputLabel value="Jogador 5:" for="jogador5" />
+					<h:selectOneMenu id="jogador5" value="#{equipeBean.jogador5}"
+						required="true">
+						<f:selectItem itemValue="0" itemLabel="Selecione um jogador" />
+						<f:selectItems value="#{jogadorBean.jogadores}" var="jogador5"
+							itemLabel="#{jogador5.nome}" itemValue="#{jogador5.id_jogador}" />
+					</h:selectOneMenu>
+					<p:message for="jogador5" />
 
 					<p:outputLabel value="Jogador 6: " for="jogador6" />
 					<p:inputText id="jogador6" value="#{equipeBean.jogador6}" />
@@ -58,6 +78,8 @@
 				</h:panelGrid>
 				<br />
 				<p:commandButton value="Cadastrar" action="#{equipeBean.salvar}"
+					update="page-cadastro-equipe" />
+				<p:commandButton value="Cancelar" action="#{equipeBean.cancelar}"
 					update="page-cadastro-equipe" />
 			</h:form>
 			<br />
@@ -89,6 +111,9 @@
 				</p:column>
 				<p:column headerText="Jogador 7" sortBy="#{equipe.jogador7.nome}">
 					<h:outputLabel value="#{equipe.jogador7.nome}" />
+				</p:column>
+				<p:column headerText="Partida" sortBy="#{equipe.partida.id_partida}">
+					<h:outputLabel value="#{equipe.partida.id_partida}" />
 				</p:column>
 				<p:column headerText="Ações">
 					<h:form>

@@ -13,11 +13,11 @@ public class Dao<T> implements IDao<T> {
 
 	private EntityManager em;
 	private Class<T> type;
-	
+
 	public static void main(String[] args) {
 		Jogador jog = new Jogador();
 		jog.setNome("andrey");
-		
+
 		Dao<Jogador> dao = new Dao<Jogador>(Jogador.class);
 		dao.salvar(jog);
 		List<Jogador> consultar = dao.consultar();
@@ -25,7 +25,7 @@ public class Dao<T> implements IDao<T> {
 			System.out.println(p.getNome());
 		}
 	}
-	
+
 	public Dao(Class<T> type) {
 		this.type = type;
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu_segundonafcc");
@@ -40,7 +40,8 @@ public class Dao<T> implements IDao<T> {
 	}
 
 	/**
-	 * @param type the type to set
+	 * @param type
+	 *            the type to set
 	 */
 	public void setType(Class<T> type) {
 		this.type = type;
@@ -50,7 +51,6 @@ public class Dao<T> implements IDao<T> {
 		em.getTransaction().begin();
 		em.persist(t);
 		em.getTransaction().commit();
-		
 	}
 
 	public T buscar(Long id) {
@@ -58,13 +58,12 @@ public class Dao<T> implements IDao<T> {
 	}
 
 	public List<T> consultar() {
-		String sql = "SELECT t FROM "+type.getName()+" t";
+		String sql = "SELECT t FROM " + type.getName() + " t";
 		TypedQuery<T> query = em.createQuery(sql, type);
 		return query.getResultList();
 	}
 
 	public void excluir(Long id) {
-
 		em.getTransaction().begin();
 		em.remove(buscar(id));
 		em.getTransaction().commit();
