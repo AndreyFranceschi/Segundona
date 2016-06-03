@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<f:view>
+	<h:head></h:head>
+	<h:body>
+		<pe:layout fullPage="true"
+			options="#{layoutController.layoutOptionsOne}"
+			rendered="#{layoutController.layoutOneShown}"
+			state="#{layoutController.stateOne}">
+
+			<pe:layoutPane position="west">
+				<div id="cabecalho"></div>
+				<h:graphicImage library="img" name="logo.jpg" width = "100%">				
+				</h:graphicImage>
+				<p:menu style="whidth:100%">
+					<p:submenu label="cadastro">
+						<p:menuitem value="Jogador" url="jogador.xhtml" />
+						<p:menuitem value="Equipe" url="equipe.xhtml" />
+						<p:menuitem value="Partida" url="partida.xhtml" />
+					</p:submenu>
+
+				</p:menu>
+			</pe:layoutPane>
+			<pe:layoutPane position="center">
+				<div id="conteudo">
+					<ui:insert name="conteudo"></ui:insert>
+				</div>
+			</pe:layoutPane>
+		</pe:layout>
+	</h:body>
+</f:view>
+</html>
