@@ -10,7 +10,6 @@ import javax.faces.bean.SessionScoped;
 import br.com.sfcc.dao.Dao;
 import br.com.sfcc.dao.IDao;
 import br.com.sfcc.model.Equipe;
-import br.com.sfcc.model.Jogador;
 import br.com.sfcc.model.Partida;
 //import br.com.tt.util.faces.UtilMessage;
 
