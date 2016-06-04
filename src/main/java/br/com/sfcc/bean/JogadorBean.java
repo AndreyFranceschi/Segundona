@@ -19,16 +19,16 @@ public class JogadorBean {
 	private Jogador jogador;
 	private List<Jogador> jogadores;
 	private IDao<Jogador> dao;
-	
+
 	@PostConstruct
-	private void init(){
+	private void init() {
 		System.out.println("private void init jogadorbean");
 		dao = new Dao<Jogador>(Jogador.class);
 		jogadores = new ArrayList<Jogador>();
 		jogadores = dao.consultar();
 		jogador = new Jogador();
 	}
-	
+
 	public Jogador getJogador() {
 		return jogador;
 	}
@@ -49,23 +49,22 @@ public class JogadorBean {
 		System.out.println("public List jogadores");
 		return jogadores;
 	}
-	
+
 	public void alterar(Jogador pJogador) {
 		System.out.println("public void alterar jogador");
 		jogador = pJogador;
 	}
 
 	public void excluir(Jogador pJogador) {
-		UtilMessage.warn("", pJogador.getNome()+" Foi Excluido!");
+		UtilMessage.warn("", pJogador.getNome() + " Foi Excluido!");
 		dao.excluir(pJogador.getId_jogador());
 		jogadores = dao.consultar();
 	}
-	
+
 	public void cancelar() {
 		System.out.println("public void cancelar equipebean");
 		jogador = new Jogador();
 		jogadores = dao.consultar();
 	}
-	
 
 }

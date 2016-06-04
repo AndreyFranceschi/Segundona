@@ -23,7 +23,7 @@
 					<p:message for="cor" />
 
 					<p:outputLabel value="Jogador 1:" for="jogador1" />
-					<h:selectOneMenu id="jogador1" value="#{equipeBean.jogador1}"
+					<h:selectOneMenu id="jogador1" value="#{equipeBean.jogador1}" 
 						required="true">
 						<f:selectItem itemValue="0" itemLabel="Selecione um jogador" />
 						<f:selectItems value="#{jogadorBean.jogadores}" var="jogador1"
@@ -67,13 +67,21 @@
 					</h:selectOneMenu>
 					<p:message for="jogador5" />
 
-					<p:outputLabel value="Jogador 6: " for="jogador6" />
-					<p:inputText id="jogador6" value="#{equipeBean.jogador6}" />
-					<p:message id="msgJogador6" for="jogador6" />
+					<p:outputLabel value="Jogador 6:" for="jogador6" />
+					<h:selectOneMenu id="jogador6" value="#{equipeBean.jogador6}">
+						<f:selectItem itemValue="0" itemLabel="Selecione um jogador" />
+						<f:selectItems value="#{jogadorBean.jogadores}" var="jogador6"
+							itemLabel="#{jogador6.nome}" itemValue="#{jogador6.id_jogador}" />
+					</h:selectOneMenu>
+					<p:message for="jogador6" />
 
-					<p:outputLabel value="Jogador 7: " for="jogador7" />
-					<p:inputText id="jogador7" value="#{equipeBean.jogador7}" />
-					<p:message id="msgJogador7" for="jogador7" />
+					<p:outputLabel value="Jogador 7:" for="jogador7" />
+					<h:selectOneMenu id="jogador7" value="#{equipeBean.jogador7}">
+						<f:selectItem itemValue="0" itemLabel="Selecione um jogador" />
+						<f:selectItems value="#{jogadorBean.jogadores}" var="jogador7"
+							itemLabel="#{jogador7.nome}" itemValue="#{jogador7.id_jogador}" />
+					</h:selectOneMenu>
+					<p:message for="jogador7" />
 
 				</h:panelGrid>
 				<br />
