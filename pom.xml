@@ -6,7 +6,7 @@
 	<name>SegundonaFCC Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
-		
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -48,6 +48,11 @@
 			<groupId>postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.1-901-1.jdbc4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4.1208</version>
 		</dependency>
 	</dependencies>
 	<build>
