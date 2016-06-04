@@ -1,1 +1,1 @@
-web: sh webapp/_template.xhtml
+web: app.json
