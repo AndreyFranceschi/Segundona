@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>SegundonaFCC</artifactId>
-	<packaging>war</packaging>
+	<packaging>pom</packaging>
 	<name>SegundonaFCC Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
@@ -57,10 +57,6 @@
 	<build>
 		<finalName>SegundonaFCC</finalName>
 	</build>
-	<parent>
-		<groupId>br.com.tt</groupId>
-		<artifactId>super-pom</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../super-pom</relativePath>
-	</parent>
+	<groupId>br.com.tt</groupId>
+	<version>0.0.1-SNAPSHOT</version>
 </project>
