@@ -11,7 +11,7 @@ import br.com.sfcc.dao.Dao;
 import br.com.sfcc.dao.IDao;
 import br.com.sfcc.model.Equipe;
 import br.com.sfcc.model.Jogador;
-import br.com.tt.util.faces.UtilMessage;
+//import br.com.tt.util.faces.UtilMessage;
 
 @ManagedBean
 @SessionScoped
@@ -87,7 +87,7 @@ public class EquipeBean {
 		}
 		dao.salvar(equipe);
 		equipe = new Equipe();
-		UtilMessage.info("Equipe Salva", "Equipe Salva com sucesso");
+	//	UtilMessage.info("Equipe Salva", "Equipe Salva com sucesso");
 		equipes = dao.consultar();
 		jogador1 = "";
 		jogador2 = "";
@@ -135,7 +135,7 @@ public class EquipeBean {
 	}
 
 	public void excluir(Equipe pEquipe) {
-		UtilMessage.warn("", pEquipe.getCor() + " Foi Excluida!");
+		//UtilMessage.warn("", pEquipe.getCor() + " Foi Excluida!");
 		dao.excluir(pEquipe.getId_equipe());
 		equipes = dao.consultar();
 	}

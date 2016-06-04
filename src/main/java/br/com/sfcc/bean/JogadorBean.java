@@ -10,7 +10,7 @@ import javax.faces.bean.SessionScoped;
 import br.com.sfcc.dao.Dao;
 import br.com.sfcc.dao.IDao;
 import br.com.sfcc.model.Jogador;
-import br.com.tt.util.faces.UtilMessage;
+//import br.com.tt.util.faces.UtilMessage;
 
 @ManagedBean
 @SessionScoped
@@ -41,7 +41,7 @@ public class JogadorBean {
 		System.out.println("public void salvar jogadorbean");
 		dao.salvar(jogador);
 		jogador = new Jogador();
-		UtilMessage.info("Jogador Salvo", "Jogador Salvo com sucesso");
+		//UtilMessage.info("Jogador Salvo", "Jogador Salvo com sucesso");
 		jogadores = dao.consultar();
 	}
 
@@ -56,7 +56,7 @@ public class JogadorBean {
 	}
 
 	public void excluir(Jogador pJogador) {
-		UtilMessage.warn("", pJogador.getNome() + " Foi Excluido!");
+		//UtilMessage.warn("", pJogador.getNome() + " Foi Excluido!");
 		dao.excluir(pJogador.getId_jogador());
 		jogadores = dao.consultar();
 	}

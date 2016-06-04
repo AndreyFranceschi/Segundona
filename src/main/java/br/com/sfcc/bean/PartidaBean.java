@@ -12,7 +12,7 @@ import br.com.sfcc.dao.IDao;
 import br.com.sfcc.model.Equipe;
 import br.com.sfcc.model.Jogador;
 import br.com.sfcc.model.Partida;
-import br.com.tt.util.faces.UtilMessage;
+//import br.com.tt.util.faces.UtilMessage;
 
 @ManagedBean
 @SessionScoped
@@ -61,7 +61,7 @@ public class PartidaBean {
 		}
 		dao.salvar(partida);
 		partida = new Partida();
-		UtilMessage.info("Partida Salva", "Partida Salva com sucesso");
+		//UtilMessage.info("Partida Salva", "Partida Salva com sucesso");
 		partidas = dao.consultar();
 		equipe1 = "";
 		equipe2 = "";
@@ -80,7 +80,7 @@ public class PartidaBean {
 	}
 
 	public void excluir(Partida pPartida) {
-		UtilMessage.warn("", pPartida.getId_partida()+" Foi Excluida!");
+		//UtilMessage.warn("", pPartida.getId_partida()+" Foi Excluida!");
 		dao.excluir(pPartida.getId_partida());
 		partidas = dao.consultar();
 	}
