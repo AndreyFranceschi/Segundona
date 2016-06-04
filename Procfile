@@ -1,1 +1,1 @@
-web: sh webapp/index.xhtml
+web: sh webapp/_template.xhtml
