@@ -1,1 +1,1 @@
-web: app.json
+web: java -cp target\classes;target\dependency\* Main
